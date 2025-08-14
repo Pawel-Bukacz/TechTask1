@@ -18,7 +18,7 @@ test.describe('Login tests', () => {
   test('Login with incorrect username', async ({ page }) => {
     await loginPage.goto();
     await loginPage.login(username.slice(-1), password);
-    await expect(page.getByTestId('error')).toHaveText(
+    await expect(loginPage.errorMessage).toHaveText(
       'Epic sadface: Username and password do not match any user in this service',
     );
   });
@@ -26,7 +26,7 @@ test.describe('Login tests', () => {
   test('Login with incorrect password', async ({ page }) => {
     await loginPage.goto();
     await loginPage.login(username, password.slice(-1));
-    await expect(page.getByTestId('error')).toHaveText(
+    await expect(loginPage.errorMessage).toHaveText(
       'Epic sadface: Username and password do not match any user in this service',
     );
   });

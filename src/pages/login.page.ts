@@ -1,10 +1,12 @@
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class LoginPage extends BasePage {
-  constructor(page: Page) {
+  errorMessage: Locator;
+  constructor(protected page: Page) {
     super(page);
     this.url = '/';
+    this.errorMessage = page.getByTestId('error');
   }
   async login(username: string, password: string): Promise<void> {
     await this.page.getByTestId('username').fill(username);

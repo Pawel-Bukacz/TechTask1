@@ -24,6 +24,7 @@ test.describe('Main page smoke tests', () => {
     { tag: ['@smoke'] },
     async ({ page }) => {
       await mainMenuComponent.cartButton.click();
+
       await expect(page.getByTestId('title')).toHaveText('Your Cart');
     },
   );
@@ -32,6 +33,7 @@ test.describe('Main page smoke tests', () => {
     { tag: ['@smoke'] },
     async ({ page }) => {
       await mainMenuComponent.burgerMenuButton.click();
+
       await expect(page.getByTestId('inventory-sidebar-link')).toHaveText(
         'All Items',
       );

@@ -6,6 +6,7 @@ export class BurgerMenu {
   logoutButton: Locator;
   resetButton: Locator;
   closeButton: Locator;
+
   constructor(protected page: Page) {
     this.allItemsButton = page.getByTestId('inventory-sidebar-link');
     this.aboutButton = page.locator('#about_sidebar_link');

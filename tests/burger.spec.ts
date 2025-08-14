@@ -21,36 +21,38 @@ test.describe('Burger menu tests', () => {
   test('Check All Items button', async ({ page }) => {
     await mainMenuComponent.burgerMenuButton.click();
     await burgerMenu.allItemsButton.click();
+
     expect(page.url()).toBe('https://www.saucedemo.com/inventory.html');
   });
 
   test('Check About button', async ({ page }) => {
     await mainMenuComponent.burgerMenuButton.click();
     await burgerMenu.aboutButton.click();
-    expect(page.url()).toBe('https://saucelabs.com/');
+
+    expect(page).toHaveURL('https://saucelabs.com/');
   });
 
   test('Check Logout button', async ({ page }) => {
     await mainMenuComponent.burgerMenuButton.click();
     await burgerMenu.logoutButton.click();
-    expect(page.url()).toBe('https://www.saucedemo.com/');
+
+    expect(page).toHaveURL('https://www.saucedemo.com/');
   });
 
   test('Check Reset App State button', async ({ page }) => {
     await page.getByTestId('add-to-cart-sauce-labs-backpack').click();
-    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');
-
+    await expect(mainMenuComponent.cartBadge).toHaveText('1');
     await mainMenuComponent.burgerMenuButton.click();
     await burgerMenu.resetButton.click();
+
     await expect(page.getByTestId('shopping-cart-badge')).toBeHidden();
   });
 
   test('Check close button', async ({ page }) => {
     await mainMenuComponent.burgerMenuButton.click();
-    await expect(page.getByTestId('inventory-sidebar-link')).toHaveText(
-      'All Items',
-    );
+    await expect(burgerMenu.allItemsButton).toHaveText('All Items');
     await burgerMenu.closeButton.click();
-    await expect(page.getByTestId('inventory-sidebar-link')).toBeHidden();
+
+    await expect(burgerMenu.allItemsButton).toBeHidden();
   });
 });
