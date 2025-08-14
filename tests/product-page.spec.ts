@@ -5,6 +5,7 @@ import { ProductDescription } from '../src/pages/product-description.page';
 
 test.describe('Login tests', () => {
   let productDescription: ProductDescription;
+  
   test.beforeEach(async ({ page }) => {
     productDescription = new ProductDescription(page);
     await productDescription.goto();

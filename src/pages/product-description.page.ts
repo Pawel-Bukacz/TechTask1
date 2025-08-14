@@ -5,6 +5,7 @@ export class ProductDescription extends MainPage {
   invItemName: Locator;
   invItemDesc: Locator;
   invItemPrice: Locator;
+
   constructor(protected page: Page) {
     super(page);
     this.invItemName = page.getByTestId('inventory-item-name');

@@ -6,9 +6,11 @@ test.describe('Login tests', () => {
   let loginPage: LoginPage;
   let username = loginData.username;
   let password = loginData.password;
+
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
   });
+  
   test('Login with correct credentials', async ({ page }) => {
     await loginPage.goto();
     await loginPage.login(username, password);

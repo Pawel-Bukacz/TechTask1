@@ -3,11 +3,13 @@ import { BasePage } from './base.page';
 
 export class LoginPage extends BasePage {
   errorMessage: Locator;
+
   constructor(protected page: Page) {
     super(page);
     this.url = '/';
     this.errorMessage = page.getByTestId('error');
   }
+
   async login(username: string, password: string): Promise<void> {
     await this.page.getByTestId('username').fill(username);
     await this.page.getByTestId('password').fill(password);

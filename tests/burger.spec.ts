@@ -22,7 +22,7 @@ test.describe('Burger menu tests', () => {
     await mainMenuComponent.burgerMenuButton.click();
     await burgerMenu.allItemsButton.click();
 
-    expect(page.url()).toBe('https://www.saucedemo.com/inventory.html');
+    expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
   });
 
   test('Check About button', async ({ page }) => {

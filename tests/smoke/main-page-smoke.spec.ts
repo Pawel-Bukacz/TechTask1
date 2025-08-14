@@ -12,6 +12,7 @@ test.describe('Main page smoke tests', () => {
     await loginPage.goto();
     await loginPage.login(loginData.username, loginData.password);
   });
+
   test(
     'Verify if product page is available',
     { tag: ['@smoke'] },
@@ -19,6 +20,7 @@ test.describe('Main page smoke tests', () => {
       await expect(page.getByTestId('title')).toHaveText('Products');
     },
   );
+
   test(
     'Verify if cart page is available',
     { tag: ['@smoke'] },
@@ -28,6 +30,7 @@ test.describe('Main page smoke tests', () => {
       await expect(page.getByTestId('title')).toHaveText('Your Cart');
     },
   );
+
   test(
     'Verify if burger menu is available',
     { tag: ['@smoke'] },
