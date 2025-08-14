@@ -11,6 +11,7 @@ export class FooterPage extends LoginPage {
       this.page.waitForEvent('popup'),
       this.page.getByTestId(id).click(),
     ]);
+
     return newPage;
   }
 }

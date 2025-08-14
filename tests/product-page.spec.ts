@@ -5,14 +5,14 @@ import { ProductDescription } from '../src/pages/product-description.page';
 
 test.describe('Login tests', () => {
   let productDescription: ProductDescription;
-  
+
   test.beforeEach(async ({ page }) => {
     productDescription = new ProductDescription(page);
     await productDescription.goto();
     await productDescription.login(loginData.username, loginData.password);
   });
 
-  test('Check product titles', async ({ page }) => {
+  test('Check every product title', async ({ page }) => {
     for (let i = 0; i < 6; i++) {
       expect(productDescription.itemTitleLink(i)).toHaveText(
         productList[i].title,
@@ -20,7 +20,7 @@ test.describe('Login tests', () => {
     }
   });
 
-  test('Check product details', async ({ page }) => {
+  test('Check details of each product', async ({ page }) => {
     for (let i = 0; i < 6; i++) {
       await productDescription.itemTitleLink(i).click();
       await expect(productDescription.invItemName).toHaveText(
