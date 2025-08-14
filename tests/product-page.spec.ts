@@ -1,48 +1,37 @@
-import test, { expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
+import { loginData } from '../src/test-data/login.data';
+import { productList } from '../src/test-data/product.data';
+import { ProductDescription } from '../src/pages/product-description.page';
 
 test.describe('Login tests', () => {
+  let productDescription: ProductDescription;
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://www.saucedemo.com');
-    await page.getByTestId('username').fill('standard_user');
-    await page.getByTestId('password').fill('secret_sauce');
-    await page.getByTestId('login-button').click();
-    });
-  test('Footer test X', async ({page})=>{
-    const [newPage] = await Promise.all([
-    page.waitForEvent('popup'),
-    page.getByTestId('social-twitter').click(),
-    ]);
+    productDescription = new ProductDescription(page);
+    await productDescription.goto();
+    await productDescription.login(loginData.username, loginData.password);
+  });
 
-    // Check the URL
-    expect(newPage.url()).toBe('https://x.com/saucelabs');
-});
-  test('Footer test LI', async ({page})=>{
-    const [newPage] = await Promise.all([
-    page.waitForEvent('popup'),
-    page.getByTestId('social-linkedin').click(),
-    ]);
+  test('Check product titles', async ({ page }) => {
+    for (let i = 0; i < 6; i++) {
+      expect(productDescription.itemTitleLink(i)).toHaveText(
+        productList[i].title,
+      );
+    }
+  });
 
-    // Check the URL
-    expect(newPage.url()).toBe('https://www.linkedin.com/company/sauce-labs/');
-});
-  test('Footer test FB', async ({page})=>{
-    const [newPage] = await Promise.all([
-    page.waitForEvent('popup'),
-    page.getByTestId('social-facebook').click(),
-    ]);
-
-    // Check the URL
-    expect(newPage.url()).toBe('https://www.facebook.com/saucelabs');
-});
-
-test('Show product details', async ({ page }) => {
-  const productName = await page.locator('#item_4_title_link').getByTestId('inventory-item-name').innerText();
-
-  // Open the product details
-  await page.locator('#item_4_title_link').click();
-
-  // Assert URL and name on the details page
-  await expect(page).toHaveURL('https://www.saucedemo.com/inventory-item.html?id=4');
-  await expect(page.getByTestId('inventory-item-name')).toHaveText(productName);
-});
+  test('Check product details', async ({ page }) => {
+    for (let i = 0; i < 6; i++) {
+      await productDescription.itemTitleLink(i).click();
+      await expect(productDescription.invItemName).toHaveText(
+        productList[i].title,
+      );
+      await expect(productDescription.invItemDesc).toHaveText(
+        productList[i].description,
+      );
+      await expect(productDescription.invItemPrice).toContainText(
+        productList[i].price,
+      );
+      await page.goBack();
+    }
+  });
 });
