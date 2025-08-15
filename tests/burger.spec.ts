@@ -29,7 +29,7 @@ test.describe('Burger menu tests', () => {
     await mainMenuComponent.burgerMenuButton.click();
     await burgerMenu.aboutButton.click();
 
-    expect(page).toHaveURL('https://saucelabs.com/');
+    expect(page).toHaveURL('https://saucelabs.com');
   });
 
   test('Check Logout button', async ({ page }) => {

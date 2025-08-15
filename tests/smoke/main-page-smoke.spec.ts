@@ -3,7 +3,7 @@ import { LoginPage } from '../../src/pages/login.page';
 import { loginData } from '../../src/test-data/login.data';
 import { MainMenuComponent } from '../../src/components/main-menu.components';
 
-test.describe('Main page smoke tests', () => {
+test.describe('Smoke tests', () => {
   let loginPage: LoginPage;
   let mainMenuComponent: MainMenuComponent;
   test.beforeEach(async ({ page }) => {

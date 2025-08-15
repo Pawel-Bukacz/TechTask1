@@ -6,8 +6,8 @@ export class FooterPage extends LoginPage {
     super(page);
   }
 
-  async checkSocial(id: string): Promise<Page> {
-    const [newPage] = await Promise.all([
+  async checkSocialUrl(id: string): Promise<Page> {
+    const [newPage]: [Page, void] = await Promise.all([
       this.page.waitForEvent('popup'),
       this.page.getByTestId(id).click(),
     ]);

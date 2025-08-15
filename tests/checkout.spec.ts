@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Login tests', () => {
+test.describe('Checkout functionality tests', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://www.saucedemo.com');
     await page.getByTestId('username').fill('standard_user');
@@ -9,7 +9,7 @@ test.describe('Login tests', () => {
   });
 
   test('Add item to the cart', async ({ page }) => {
-    const itemTitle = await page
+    const itemTitle: string = await page
       .locator('#item_4_title_link')
       .getByTestId('inventory-item-name')
       .innerText();
@@ -23,7 +23,7 @@ test.describe('Login tests', () => {
   });
 
   test('Check out', async ({ page }) => {
-    const itemTitle = await page
+    const itemTitle: string = await page
       .locator('#item_4_title_link')
       .getByTestId('inventory-item-name')
       .innerText();

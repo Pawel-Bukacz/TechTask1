@@ -3,7 +3,7 @@ import { loginData } from '../src/test-data/login.data';
 import { productList } from '../src/test-data/product.data';
 import { ProductDescription } from '../src/pages/product-description.page';
 
-test.describe('Login tests', () => {
+test.describe('Product page functionality tests', () => {
   let productDescription: ProductDescription;
 
   test.beforeEach(async ({ page }) => {
@@ -13,7 +13,7 @@ test.describe('Login tests', () => {
   });
 
   test('Check every product title', async ({ page }) => {
-    for (let i = 0; i < 6; i++) {
+    for (let i: number = 0; i < 6; i++) {
       expect(productDescription.itemTitleLink(i)).toHaveText(
         productList[i].title,
       );
@@ -21,7 +21,7 @@ test.describe('Login tests', () => {
   });
 
   test('Check details of each product', async ({ page }) => {
-    for (let i = 0; i < 6; i++) {
+    for (let i: number = 0; i < 6; i++) {
       await productDescription.itemTitleLink(i).click();
       await expect(productDescription.invItemName).toHaveText(
         productList[i].title,

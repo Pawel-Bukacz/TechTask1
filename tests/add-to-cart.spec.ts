@@ -3,7 +3,7 @@ import { CheckOut } from '../src/pages/checkout.page';
 import { loginData } from '../src/test-data/login.data';
 import { checkoutData } from '../src/test-data/checkout.data';
 
-test.describe('Add items to cart', () => {
+test.describe('Add items to cart functionality tests', () => {
   let checkOut: CheckOut;
   test.beforeEach(async ({ page }) => {
     checkOut = new CheckOut(page);

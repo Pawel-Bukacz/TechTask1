@@ -4,8 +4,8 @@ import { loginData } from '../src/test-data/login.data';
 
 test.describe('Login tests', () => {
   let loginPage: LoginPage;
-  let username = loginData.username;
-  let password = loginData.password;
+  let username: string = loginData.username;
+  let password: string = loginData.password;
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
