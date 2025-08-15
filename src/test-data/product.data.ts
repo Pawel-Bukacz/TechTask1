@@ -6,7 +6,7 @@ export interface Product {
   addToCartButtonId: string;
 }
 
-export const productList = [
+export const productList: Product[] = [
   {
     id: 0,
     title: 'Sauce Labs Bike Light',

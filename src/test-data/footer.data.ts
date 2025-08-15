@@ -1,4 +1,13 @@
-export const footerData = {
+export interface FooterData {
+  twitterId: string;
+  twitterURL: string;
+  linkedInId: string;
+  linkedInURL: string;
+  facebookId: string;
+  facebookURL: string;
+}
+
+export const footerData: FooterData = {
   twitterId: 'social-twitter',
   twitterURL: 'https://x.com/saucelabs',
   linkedInId: 'social-linkedin',
