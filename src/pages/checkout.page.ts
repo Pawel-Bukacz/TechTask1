@@ -1,13 +1,13 @@
-import { expect, Locator, Page } from '@playwright/test';
-import { MainPage } from './main.page';
 import { MainMenuComponent } from '../components/main-menu.components';
-import { productList } from '../test-data/product.data';
 import { checkoutData } from '../test-data/checkout.data';
+import { Product, productList } from '../test-data/product.data';
+import { MainPage } from './main.page';
+import { Locator, Page, expect } from '@playwright/test';
 
 export class CheckOut extends MainPage {
   mainMenuComponent: MainMenuComponent;
   itemList: object[];
-  productList: any;
+  productList: Product[];
   checkoutButton: Locator;
 
   constructor(protected page: Page) {

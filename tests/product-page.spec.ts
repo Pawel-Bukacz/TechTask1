@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { ProductDescription } from '../src/pages/product-description.page';
 import { loginData } from '../src/test-data/login.data';
 import { productList } from '../src/test-data/product.data';
-import { ProductDescription } from '../src/pages/product-description.page';
+import { expect, test } from '@playwright/test';
 
 test.describe('Product page functionality tests', () => {
   let productDescription: ProductDescription;
@@ -12,7 +12,7 @@ test.describe('Product page functionality tests', () => {
     await productDescription.login(loginData.username, loginData.password);
   });
 
-  test('Check every product title', async ({ page }) => {
+  test('Check every product title', async () => {
     for (let i: number = 0; i < 6; i++) {
       expect(productDescription.itemTitleLink(i)).toHaveText(
         productList[i].title,

@@ -1,5 +1,5 @@
-import { Locator, Page } from '@playwright/test';
 import { LoginPage } from './login.page';
+import { Locator, Page } from '@playwright/test';
 
 export class MainPage extends LoginPage {
   constructor(protected page: Page) {

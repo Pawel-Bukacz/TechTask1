@@ -1,5 +1,5 @@
-import { Locator, Page } from '@playwright/test';
 import { MainPage } from './main.page';
+import { Locator, Page } from '@playwright/test';
 
 export class ProductDescription extends MainPage {
   invItemName: Locator;

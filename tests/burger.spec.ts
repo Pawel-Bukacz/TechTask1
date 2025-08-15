@@ -1,8 +1,8 @@
-import test, { expect } from '@playwright/test';
-import { LoginPage } from '../src/pages/login.page';
 import { MainMenuComponent } from '../src/components/main-menu.components';
-import { loginData } from '../src/test-data/login.data';
 import { BurgerMenu } from '../src/pages/burger-menu.page';
+import { LoginPage } from '../src/pages/login.page';
+import { loginData } from '../src/test-data/login.data';
+import { expect, test } from '@playwright/test';
 
 test.describe('Burger menu tests', () => {
   let loginPage: LoginPage;
@@ -48,7 +48,7 @@ test.describe('Burger menu tests', () => {
     await expect(page.getByTestId('shopping-cart-badge')).toBeHidden();
   });
 
-  test('Check close button', async ({ page }) => {
+  test('Check close button', async () => {
     await mainMenuComponent.burgerMenuButton.click();
     await expect(burgerMenu.allItemsButton).toHaveText('All Items');
     await burgerMenu.closeButton.click();

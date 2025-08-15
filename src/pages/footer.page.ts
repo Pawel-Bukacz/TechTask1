@@ -1,5 +1,5 @@
-import { Page } from '@playwright/test';
 import { LoginPage } from './login.page';
+import { Page } from '@playwright/test';
 
 export class FooterPage extends LoginPage {
   constructor(protected page: Page) {

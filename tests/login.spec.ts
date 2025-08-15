@@ -1,11 +1,11 @@
-import { test, expect } from '@playwright/test';
 import { LoginPage } from '../src/pages/login.page';
 import { loginData } from '../src/test-data/login.data';
+import { expect, test } from '@playwright/test';
 
 test.describe('Login tests', () => {
   let loginPage: LoginPage;
-  let username: string = loginData.username;
-  let password: string = loginData.password;
+  const username: string = loginData.username;
+  const password: string = loginData.password;
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
@@ -18,7 +18,7 @@ test.describe('Login tests', () => {
     await expect(page.getByTestId('title')).toHaveText('Products');
   });
 
-  test('Login with incorrect username', async ({ page }) => {
+  test('Login with incorrect username', async () => {
     await loginPage.goto();
     await loginPage.login(username.slice(-1), password);
 
@@ -27,7 +27,7 @@ test.describe('Login tests', () => {
     );
   });
 
-  test('Login with incorrect password', async ({ page }) => {
+  test('Login with incorrect password', async () => {
     await loginPage.goto();
     await loginPage.login(username, password.slice(-1));
 

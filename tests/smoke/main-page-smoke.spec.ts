@@ -1,7 +1,7 @@
-import { test, expect, Page } from '@playwright/test';
+import { MainMenuComponent } from '../../src/components/main-menu.components';
 import { LoginPage } from '../../src/pages/login.page';
 import { loginData } from '../../src/test-data/login.data';
-import { MainMenuComponent } from '../../src/components/main-menu.components';
+import { expect, test } from '@playwright/test';
 
 test.describe('Smoke tests', () => {
   let loginPage: LoginPage;

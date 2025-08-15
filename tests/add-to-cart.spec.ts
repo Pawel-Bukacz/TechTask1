@@ -1,7 +1,7 @@
-import { expect, test } from '@playwright/test';
 import { CheckOut } from '../src/pages/checkout.page';
-import { loginData } from '../src/test-data/login.data';
 import { checkoutData } from '../src/test-data/checkout.data';
+import { loginData } from '../src/test-data/login.data';
+import { expect, test } from '@playwright/test';
 
 test.describe('Add items to cart functionality tests', () => {
   let checkOut: CheckOut;
