@@ -22,8 +22,14 @@ Tests are based on the standard user, where no error or glitches appear. Conside
   `https://code.visualstudio.com/`
 - Verify if node is correctly installed  
   `node -v`
+- Clone repository
+  `git clone https://github.com/Pawel-Bukacz/TechTask1.git`
+  Or download it as a zip folder, unzip it and drop into your project folder
 - Initialize playwright project  
   `npm init playwright@latest`
+- Delete following folder:
+  - Test examples
+  - e2e
 - Add following extensions to VS Code  
    Extensions could be found in .vscode > settings.json file
   - ESlin
@@ -147,6 +153,11 @@ File: `checkout.page.ts`
 ### CI/CD
 
 GitHub Actions is used as a CI/CD solution for this project. This solution fulfill every current need but also potential expansions and reworks.
+
+Tests are executed as following:
+
+- First smoke tests run
+- If result of smoke test is positive, rest of the tests are executed.
 
 To run tests from GitHub Actions:
 
