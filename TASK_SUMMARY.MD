@@ -21,7 +21,7 @@ configurations.
 - Demonstrate the test execution and provide a detailed explanation of the framework structure, test architecture, and any design patterns used.
 - Document any assumptions or limitations of the test automation framework and tests.
 
-#### Deliverables
+#### Deliverables:
 
 - Test automation framework set up with a clear folder structure and configuration files.
 - Automated tests are written in the chosen test automation framework for the specified functionality.
