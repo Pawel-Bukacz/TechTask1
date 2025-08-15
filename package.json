@@ -10,7 +10,9 @@
     "tsc:check": "npx tsc --noEmit --pretty --strict",
     "format:check": "npx prettier . --check \"!**.ts\"",
     "report": "npx playwright show-report",
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:rest": "npx playwright test --grep-invert @smoke"
   },
   "keywords": [],
   "author": "",

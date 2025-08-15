@@ -1,21 +1,18 @@
 import { MainMenuComponent } from '../src/components/main-menu.components';
 import { BurgerMenu } from '../src/pages/burger-menu.page';
-import { LoginPage } from '../src/pages/login.page';
 import { loginData } from '../src/test-data/login.data';
 import { expect, test } from '@playwright/test';
 
 test.describe('Burger menu tests', () => {
-  let loginPage: LoginPage;
   let mainMenuComponent: MainMenuComponent;
   let burgerMenu: BurgerMenu;
 
   test.beforeEach(async ({ page }) => {
-    loginPage = new LoginPage(page);
     mainMenuComponent = new MainMenuComponent(page);
     burgerMenu = new BurgerMenu(page);
 
-    await loginPage.goto();
-    await loginPage.login(loginData.username, loginData.password);
+    await burgerMenu.goto();
+    await burgerMenu.login(loginData.username, loginData.password);
   });
 
   test('Check All Items button', async ({ page }) => {
@@ -29,7 +26,7 @@ test.describe('Burger menu tests', () => {
     await mainMenuComponent.burgerMenuButton.click();
     await burgerMenu.aboutButton.click();
 
-    expect(page).toHaveURL('https://saucelabs.com');
+    expect(page).toHaveURL('https://saucelabs.com/');
   });
 
   test('Check Logout button', async ({ page }) => {

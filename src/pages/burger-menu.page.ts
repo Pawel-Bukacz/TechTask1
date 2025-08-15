@@ -1,6 +1,7 @@
+import { LoginPage } from './login.page';
 import { Locator, Page } from '@playwright/test';
 
-export class BurgerMenu {
+export class BurgerMenu extends LoginPage {
   allItemsButton: Locator;
   aboutButton: Locator;
   logoutButton: Locator;
@@ -8,6 +9,7 @@ export class BurgerMenu {
   closeButton: Locator;
 
   constructor(protected page: Page) {
+    super(page);
     this.allItemsButton = page.getByTestId('inventory-sidebar-link');
     this.aboutButton = page.locator('#about_sidebar_link');
     this.logoutButton = page.locator('#logout_sidebar_link');

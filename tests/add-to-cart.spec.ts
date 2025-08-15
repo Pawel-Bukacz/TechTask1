@@ -68,7 +68,7 @@ test.describe('Add items to cart functionality tests', () => {
     );
   });
 
-  test('Add product to cart and verify them', async ({ page }) => {
+  test('Verifying checkout functionality', async ({ page }) => {
     await checkOut.addItemsToCart();
 
     await expect(page).toHaveURL(

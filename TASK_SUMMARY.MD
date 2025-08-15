@@ -2,8 +2,7 @@
 
 ### Objective:
 
-Set up a test automation framework of your choice and write automated tests to validate the functionality of an e-commerce website. Set up the chosen test automation framework with all necessary dependencies and
-configurations.
+Set up a test automation framework of your choice and write automated tests to validate the functionality of an e-commerce website. Set up the chosen test automation framework with all necessary dependencies and configurations.
 
 #### Write automated tests to verify the following functionality:
 

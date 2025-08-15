@@ -3,8 +3,6 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-// import eslintPluginPlaywright from 'eslint-plugin-playwright';
-
 export default [
   {
     ignores: ['package-lock.json', 'playwright-report/**', 'test-results/**'],
