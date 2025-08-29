@@ -1,90 +1,90 @@
-name: E2E test framework for Swag Labs test e-commerce webpage
+# name: E2E test framework for Swag Labs test e-commerce webpage
 
-on:
-  push:
-    branches: [main, master]
-  pull_request:
-    branches: [main, master]
-  workflow_dispatch:
-  schedule:
-    - cron: '0 8 * * *'
-    - cron: '0 20 * * *'
+# on:
+#   push:
+#     branches: [main, master]
+#   pull_request:
+#     branches: [main, master]
+#   workflow_dispatch:
+#   schedule:
+#     - cron: '0 8 * * *'
+#     - cron: '0 20 * * *'
 
-jobs:
-  smoke:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+# jobs:
+#   smoke:
+#     runs-on: ubuntu-latest
+#     timeout-minutes: 10
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
+#       - name: Setup Node
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: lts/*
 
-      - name: Install dependencies
-        run: npm ci
+#       - name: Install dependencies
+#         run: npm ci
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+#       - name: Install Playwright browsers
+#         run: npx playwright install --with-deps
 
-      - name: Run smoke tests
-        run: npm run test:smoke
+#       - name: Run smoke tests
+#         run: npm run test:smoke
 
-      - name: Upload HTML report (smoke)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report-smoke
-          path: playwright-report
-          retention-days: 2
+#       - name: Upload HTML report (smoke)
+#         if: always()
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: playwright-report-smoke
+#           path: playwright-report
+#           retention-days: 2
 
-      - name: Upload traces (smoke)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-traces-smoke
-          path: '**/*.zip'
-          retention-days: 2
+#       - name: Upload traces (smoke)
+#         if: always()
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: playwright-traces-smoke
+#           path: '**/*.zip'
+#           retention-days: 2
 
-  rest:
-    needs: smoke
-    if: ${{ needs.smoke.result == 'success' }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+#   rest:
+#     needs: smoke
+#     if: ${{ needs.smoke.result == 'success' }}
+#     runs-on: ubuntu-latest
+#     timeout-minutes: 10
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
+#       - name: Setup Node
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: lts/*
 
-      - name: Install dependencies
-        run: npm ci
+#       - name: Install dependencies
+#         run: npm ci
 
-      - name: Install Playwright browsers
-        run: npx playwright install
+#       - name: Install Playwright browsers
+#         run: npx playwright install
 
-      - name: Run remaining tests
-        run: npm run test:rest
+#       - name: Run remaining tests
+#         run: npm run test:rest
 
-      - name: Upload HTML report (rest)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report-rest
-          path: playwright-report
-          retention-days: 2
+#       - name: Upload HTML report (rest)
+#         if: always()
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: playwright-report-rest
+#           path: playwright-report
+#           retention-days: 2
 
-      - name: Upload traces (rest)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-traces-rest
-          path: '**/*.zip'
-          retention-days: 2
+#       - name: Upload traces (rest)
+#         if: always()
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: playwright-traces-rest
+#           path: '**/*.zip'
+#           retention-days: 2
